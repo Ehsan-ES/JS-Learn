@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="search-part">
+        <h2 class="titr-search">
+          You can search words like hello/bye/face/smart and ...
+        </h2>
+        <input type="text" placeholder="Enter word:" id="keyword" />
+        <input type="text" placeholder="Search Result" id="srch-result" />
+      </div>
+      <input
+        type="button"
+        value="Click to Add Terms/Words Part"
+        class="btns"
+        id="hid"
+        onclick="visibility(this)"
+      />
+
+      <div class="new-words-part">
+        <h2 class="titr-new">You can Add your terms</h2>
+        <input type="text" placeholder="Enter new word:" id="new-word" />
+        <input type="text" placeholder="Translate New Word:" id="trans" />
+
+        <div class="con-buttons">
+          <input type="button" value="ADD WORD" id="send-term" class="btns" />
+          <input
+            type="button"
+            value="HIDE ADD WORD PART"
+            id="comeback"
+            class="btns"
+            onclick="makeHide(this)"
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      function visibility(el) {
+        document.querySelector(".new-words-part").style.display = "block";
+        document.querySelector("#comeback").style.display = "block";
+        el.style.display = "none";
+      }
+
+      function makeHide(el) {
+        document.querySelector(".new-words-part").style.display = "none";
+        el.style.display = "none";
+        document.querySelector("#hid").style.display = "block";
+      }
+      document.querySelector("#hid").style.width = "26rem";
+
+      keyWord = document.querySelector("#keyword");
+      srchResult = document.querySelector("#srch-result");
+
+      engWords = {
+        hello: "سلام",
+        bye: "خداحافظ",
+        face: "صورت",
+        smart: "باهوش",
+        hand: "دست",
+        dog: "سگ",
+        cat: "گربه",
+        cry: "گریه",
+        happy: "خوشحال",
+      };
+
+      perWords = {
+        سلام: "hello",
+        خداحافظ: "bye",
+        صورت: "face",
+        باهوش: "smart",
+        دست: "hand",
+        سگ: "dog",
+        گربه: "cat",
+        گریه: "cry",
+        خوشحال: "happy",
+      };
+
+      keyWord.addEventListener("input", (e) => {
+        const navig = (w) => {
+          return engWords[w];
+        };
+
+        const navigPersian = (p) => {
+          return perWords[p];
+        };
+
+        e = keyWord.value;
+
+        if (navig(e)) {
+          srchResult.value = "";
+          srchResult.value = navig(e);
+        } else if (navigPersian(e)) {
+          srchResult.value = "";
+          srchResult.value = navigPersian(e);
+        }
+
+        if (keyWord.value == "") {
+          srchResult.value = "";
+          keyWord.value = "";
+          srchResult.style.backgroundColor = "#fff";
+          srchResult.style.fontWeight = "normal";
+        }
+
+        if (!navig(e) && !navigPersian(e) && keyWord.value.length > 2) {
+          srchResult.value = "The term Does not exist ".toUpperCase();
+          srchResult.style.fontWeight = "bold";
+          srchResult.style.color = "crimson";
+          srchResult.style.backgroundColor = "#ffaaee";
+        } else if (navig(e) || navigPersian(e)) {
+          srchResult.value = navig(e) || navigPersian(e);
+          srchResult.style.fontWeight = "medium";
+          srchResult.style.color = "#111";
+          srchResult.style.backgroundColor = "#fff";
+        } else if (keyWord.value == "") {
+          srchResult.value = "";
+        }
+      });
+
+      txtNewWord = document.querySelector("#new-word");
+      txtTrans = document.querySelector("#trans");
+      btnSendterm = document.querySelector("#send-term");
+      btnComeBack = document.querySelector("#comeback");
+
+      const clearBox = () => {
+        txtNewWord.value = "";
+        txtTrans.value = "";
+      };
+
+      const messageSuccess = () => {
+        txtNewWord.value = "sucessful".toUpperCase();
+        txtTrans.value = "موفقیت آمیز";
+        txtNewWord.style.backgroundColor = "#0fbb0f";
+        txtTrans.style.backgroundColor = "#0fbb0f";
+        txtNewWord.style.color = "#aeaeae";
+        txtTrans.style.color = "#aeaeae";
+      };
+
+      btnSendterm.addEventListener("click", (nw, tw) => {
+        nw = txtNewWord.value;
+        tw = txtTrans.value;
+
+        const newWordEnter = (term, trans) => {
+          if (engWords[term]) {
+            txtNewWord.value = "the term already exist".toUpperCase();
+            txtTrans.value = txtNewWord.value;
+            return;
+          } else {
+            txtNewWord.value = engWords[term];
+            txtTrans.value = trans;
+            engWords[term] = trans;
+          }
+
+          if (perWords[trans]) {
+            txtNewWord.value = "the term already exist".toUpperCase();
+            txtTrans.value = txtNewWord.value;
+            return;
+          } else {
+            txtTrans.value = perWords[trans];
+            txtNewWord.value = term;
+            perWords[trans] = term;
+          }
+
+          if (
+            (txtNewWord.value != engWords[term] &&
+              txtTrans.value != perWords[trans]) ||
+            (!engWords[term] && !perWords[trans])
+          ) {
+            clearBox();
+          }
+        };
+
+        if (!txtTrans.value && !txtNewWord.value) {
+          txtTrans.value = "please check data...";
+          txtNewWord.value = "please check data...";
+          return;
+        }
+        if (txtNewWord.value == "") {
+          txtNewWord.value.split("undefined", "successful".toUpperCase());
+          return;
+        }
+        newWordEnter(nw, tw);
+      });
+
+      txtNewWord.addEventListener("click", () => {
+        if (
+          (txtTrans.value == "the term already exist".toUpperCase() &&
+            txtNewWord.value == "the term already exist".toUpperCase()) ||
+          (txtTrans.value == "please check data..." &&
+            txtNewWord.value == "please check data...")
+        ) {
+          txtNewWord.value = "";
+          txtTrans.value = "";
+          return;
+        }
+      });
+    </script>
+  </body>
+</html>
