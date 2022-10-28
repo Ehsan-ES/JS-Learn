@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        height: 35rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #holder {
+        background-color: beige;
+        border: 1px solid royalblue;
+        width: 30em;
+        height: 25em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .square {
+        width: 40px;
+        height: 40px;
+        border: 1px solid seagreen;
+        border-radius: 5px;
+      }
+      .cols {
+        border: 1px solid goldenrod;
+        width: 25%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .room {
+        width: 100%;
+        height: 3em;
+        border: 3px solid rgb(65, 65, 65);
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="holder"></div>
+    <script>
+      h = document.querySelector("#holder");
+      rows = [0, 0, 0, 0, 0, 0, 0, 0];
+      cols = [1, 1, 1, 1, 1, 1];
+
+      r1 = "crimson";
+      r2 = "skyblue";
+      
+      cols.forEach((col) => {
+        c = document.createElement("div");
+        col = h.appendChild(c);
+        col.className = "cols";
+
+        rows.forEach((ro) => {
+          e = document.createElement("div");
+          ro = c.appendChild(e);
+          ro.className = "room";
+
+          col.addEventListener("click", () => {
+            ro.style.backgroundColor = r1;
+            r3 = r2;
+            r2 = r1;
+            r1 = r3;
+          });
+        });
+      });
+
+      /*
+      این رو هم تست کنید
+      ro.addEventListener("click", () => {
+        col.style.backgroundColor = r1;
+        r3 = r2;
+        r2 = r1;
+        r1 = r3;
+      });
+      */
+    </script>
+  </body>
+</html>
