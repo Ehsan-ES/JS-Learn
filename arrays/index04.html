@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      arr = ["e", "h", "s", "a", "n"];
+
+      console.log(
+        "reduce : ",
+        arr.reduce((a, b) => a + b) //isEqual to ===> (arr.reduce(total,value)=> total + value)
+      );
+
+      arr2 = [23, 45, 65, 87, 32, 25, 31, 32, 6489, 32, 745];
+      document.writeln("Org array : ", arr2, "<br>");
+      //   -------------------------
+
+      document.writeln("IndexOf NO.32  : ", arr2.indexOf(32), "<br>");
+      document.writeln("lastIndexOf NO.32 : ", arr2.lastIndexOf(32), "<br>");
+
+      //   -------------------------
+
+      arr2.push("ehsan");
+      document.writeln("PUSH  'ehsan '  : ", arr2, "<br>");
+      arr2.pop();
+      document.writeln("POP  'ehsan': ", arr2, "<br>");
+      arr2.unshift("ehsan");
+      document.writeln("UNSHIFT  'ehsan ' : ", arr2, "<br>");
+      arr2.shift();
+      document.writeln("SHIFT  'ehsan ' : ", arr2, "<br>");
+    </script>
+  </body>
+</html>
