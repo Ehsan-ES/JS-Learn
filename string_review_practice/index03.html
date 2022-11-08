@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      arr = ["e", "h", "s", "s"];
+      str = "hello world";
+      str3 = "he-l-l-o- -w-o-r-l-d";
+      document.writeln(str.search("l")); //search -> output : take the chars or regEx and give the index
+      document.writeln("<br>");
+      document.writeln(str.indexOf("l")); //search -> output : take the just chars give the index
+      document.writeln("<br>");
+      document.writeln(str.startsWith("hell")); //startsWith and endsWith -> out -> boolean -> takes string give the true or false
+      document.writeln("<br>");
+      document.writeln(str.endsWith("kk")); //startsWith and endsWith -> out -> boolean -> takes string give the true or false
+      document.writeln("<br>");
+      document.writeln(arr.toString()); //tostring -> output -> convert an array to string
+      document.writeln("<br>");
+      document.writeln("org str3 : ", str3);
+      document.writeln("<br>");
+      document.writeln("After replace all : ", str3.replaceAll("-", "")); //replace -> output -> replace ..
+      document.writeln("<br>");
+      document.writeln(str.padEnd(20, ".")); //padstart and padend -> output : when this work that enterNumber is greater than maxLength
+      document.writeln(str.padStart(20, ".")); //and on start and to end of string add padd
+      document.writeln("<br>");
+      document.writeln("<br>");
+    </script>
+  </body>
+</html>
