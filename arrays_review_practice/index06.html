@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>ENTRIES :</div>
+    <p>VALUES :</p>
+    <h2>KEYS :</h2>
+    <script>
+      div = document.querySelector("div");
+      p = document.querySelector("p");
+      h2 = document.querySelector("h2");
+
+      arr = [10, 20, 30, 40, 50];
+
+      document.writeln(
+        "find : ",
+        arr.find((x) => x < 30) //return value first result just
+      );
+      document.writeln("<br>");
+      document.writeln(
+        "findIndex : ",
+        arr.findIndex((x) => x >= 30) //return first Index of this value
+      );
+
+      document.writeln("<br>");
+      document.writeln(arr.indexOf(40));
+      document.writeln("<br>");
+      document.writeln();
+      document.writeln("<br>");
+
+      arr2 = arr.entries();
+      for (x of arr2) {
+        div.innerText += ` ${x} ->`;
+      }
+      document.writeln("<br>");
+
+      document.writeln("<br>");
+
+      arr3 = arr.values();
+      for (x of arr3) {
+        p.innerText += x;
+      }
+
+      document.writeln(" ");
+      arr4 = arr.keys();
+      for (x of arr4) {
+        h2.innerText += x;
+      }
+    </script>
+  </body>
+</html>
